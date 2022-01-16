@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="FixPngImage">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/img/FixPngImage.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

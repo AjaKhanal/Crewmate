@@ -108,7 +108,6 @@ If the Shimeji-ee icon appears, but no Shimeji appear:
 Make sure you have the newest version of Shimeji-ee.
 Make sure you only have image set folders in your img directory.
 Make sure you have Java on your system.
-If you're somewhat computer savvy, you can try running Shimeji-ee from the command line. Navigate to the Shimeji-ee directory and run this command: "C:\Program Files (x86)\Java\jre8\bin\java" -jar Shimeji-ee.jar
 Try checking the log (ShimejiLogX.log) for errors. If you find a bug (which is very likely), post it up on the Shimeji-ee homepage in the issues section.
 
 ==== Additional Note ====

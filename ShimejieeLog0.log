@@ -1,3 +1,0 @@
-Jan 15, 2022 11:24:00 PM INFO: com.group_finity.mascot.action.Move tick Lost Ground (mascot1,Action (WalkWithIE,WalkWithIe))
-Jan 15, 2022 11:24:00 PM INFO: com.group_finity.mascot.behavior.UserBehavior next Lost Ground (mascot1,Behavior(ThrowIEFromRight))
-Jan 15, 2022 11:24:00 PM INFO: com.group_finity.mascot.behavior.UserBehavior init Default Behavior(mascot1,Behavior(Fall))

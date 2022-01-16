@@ -18,8 +18,6 @@ import com.group_finity.mascot.script.VariableMap;
  */
 public abstract class ActionBase implements Action {
 
-	private static final Logger log = Logger.getLogger(ActionBase.class.getName());
-
 	public static final String PARAMETER_DURATION = "Duration";
 
 	private static final boolean DEFAULT_CONDITION = true;

@@ -1,7 +1,6 @@
 package com.group_finity.mascot.action;
 
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.ResourceBundle;
 
 import com.group_finity.mascot.Mascot;
@@ -13,7 +12,8 @@ import com.group_finity.mascot.script.Variable;
 import com.group_finity.mascot.script.VariableMap;
 
 /**
- * Original Author: Yuki Yamada of Group Finity (http://www.group-finity.com/Shimeji/)
+ * Original Author: Yuki Yamada of Group Finity
+ * (http://www.group-finity.com/Shimeji/)
  * Currently developed by Shimeji-ee Group.
  */
 public abstract class ActionBase implements Action {
@@ -37,14 +37,13 @@ public abstract class ActionBase implements Action {
 	private List<Animation> animations;
 
 	private VariableMap variables;
-        
-        private ResourceBundle schema;
 
-	public ActionBase( ResourceBundle schema, final List<Animation> animations, final VariableMap context )
-        {
-            this.schema = schema;
-            this.animations = animations;
-            this.variables = context;
+	private ResourceBundle schema;
+
+	public ActionBase(ResourceBundle schema, final List<Animation> animations, final VariableMap context) {
+		this.schema = schema;
+		this.animations = animations;
+		this.variables = context;
 	}
 
 	@Override
@@ -74,8 +73,8 @@ public abstract class ActionBase implements Action {
 	@Override
 	public void next() throws LostGroundException, VariableException {
 		initFrame();
-                // clear affordances
-                getMascot( ).getAffordances( ).clear( );
+		// clear affordances
+		getMascot().getAffordances().clear();
 		tick();
 	}
 
@@ -102,20 +101,17 @@ public abstract class ActionBase implements Action {
 
 		return effective && intime;
 	}
-        
-        public Boolean isDraggable( ) throws VariableException
-        {
-            return eval( schema.getString( PARAMETER_DRAGGABLE ), Boolean.class, DEFAULT_DRAGGABLE );
-        }
 
-	private Boolean isEffective( ) throws VariableException
-        {
-            return eval( schema.getString( PARAMETER_CONDITION ), Boolean.class, DEFAULT_CONDITION );
+	public Boolean isDraggable() throws VariableException {
+		return eval(schema.getString(PARAMETER_DRAGGABLE), Boolean.class, DEFAULT_DRAGGABLE);
 	}
 
-	private int getDuration( ) throws VariableException
-        {
-            return eval( schema.getString( PARAMETER_DURATION ), Number.class, DEFAULT_DURATION ).intValue( );
+	private Boolean isEffective() throws VariableException {
+		return eval(schema.getString(PARAMETER_CONDITION), Boolean.class, DEFAULT_CONDITION);
+	}
+
+	private int getDuration() throws VariableException {
+		return eval(schema.getString(PARAMETER_DURATION), Number.class, DEFAULT_DURATION).intValue();
 	}
 
 	private void setMascot(final Mascot mascot) {
@@ -134,9 +130,8 @@ public abstract class ActionBase implements Action {
 		this.startTime = getMascot().getTime() - time;
 	}
 
-	private String getName( ) throws VariableException
-        {
-            return this.eval( schema.getString( "Name" ), String.class, null );
+	private String getName() throws VariableException {
+		return this.eval(schema.getString("Name"), String.class, null);
 	}
 
 	protected Animation getAnimation() throws VariableException {
@@ -174,9 +169,8 @@ public abstract class ActionBase implements Action {
 	protected MascotEnvironment getEnvironment() {
 		return getMascot().getEnvironment();
 	}
-        
-        protected ResourceBundle getSchema( )
-        {
-            return schema;
-        }
+
+	protected ResourceBundle getSchema() {
+		return schema;
+	}
 }

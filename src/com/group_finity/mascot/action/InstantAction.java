@@ -1,7 +1,6 @@
 package com.group_finity.mascot.action;
 
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 import com.group_finity.mascot.Mascot;
 import com.group_finity.mascot.animation.Animation;
@@ -9,15 +8,14 @@ import com.group_finity.mascot.exception.VariableException;
 import com.group_finity.mascot.script.VariableMap;
 
 /**
- * Original Author: Yuki Yamada of Group Finity (http://www.group-finity.com/Shimeji/)
+ * Original Author: Yuki Yamada of Group Finity
+ * (http://www.group-finity.com/Shimeji/)
  * Currently developed by Shimeji-ee Group.
  */
 public abstract class InstantAction extends ActionBase {
 
-	private static final Logger log = Logger.getLogger(InstantAction.class.getName());
-
-	public InstantAction( java.util.ResourceBundle schema, final VariableMap params) {
-		super( schema, new ArrayList<Animation>(), params);
+	public InstantAction(java.util.ResourceBundle schema, final VariableMap params) {
+		super(schema, new ArrayList<Animation>(), params);
 
 	}
 

@@ -69,7 +69,8 @@ import javax.swing.event.PopupMenuListener;
 /**
  * Program entry point.
  * <p>
- * Original Author: Yuki Yamada of Group Finity (http://www.group-finity.com/Shimeji/)
+ * Original Author: Yuki Yamada of Group Finity
+ * (http://www.group-finity.com/Shimeji/)
  * Currently developed by Shimeji-ee Group.
  */
 public class Main {
@@ -152,9 +153,11 @@ public class Main {
         // load langauges
         try {
             ResourceBundle.Control utf8Control = new Utf8ResourceBundleControl(false);
-            languageBundle = ResourceBundle.getBundle("language", Locale.forLanguageTag(properties.getProperty("Language", "en-GB")), utf8Control);
+            languageBundle = ResourceBundle.getBundle("language",
+                    Locale.forLanguageTag(properties.getProperty("Language", "en-GB")), utf8Control);
         } catch (Exception ex) {
-            Main.showError("The default language file could not be loaded. Ensure that you have the latest shimeji language.properties in your conf directory.");
+            Main.showError(
+                    "The default language file could not be loaded. Ensure that you have the latest shimeji language.properties in your conf directory.");
             exit();
         }
 
@@ -387,19 +390,23 @@ public class Main {
         } catch (final SAXException e) {
             System.out.println(1);
             log.log(Level.SEVERE, "Failed to load configuration files", e);
-            Main.showError(languageBundle.getString("FailedLoadConfigErrorMessage") + "\n" + e.getMessage() + "\n" + languageBundle.getString("SeeLogForDetails"));
+            Main.showError(languageBundle.getString("FailedLoadConfigErrorMessage") + "\n" + e.getMessage() + "\n"
+                    + languageBundle.getString("SeeLogForDetails"));
         } catch (final ParserConfigurationException e) {
             System.out.println(2);
             log.log(Level.SEVERE, "Failed to load configuration files", e);
-            Main.showError(languageBundle.getString("FailedLoadConfigErrorMessage") + "\n" + e.getMessage() + "\n" + languageBundle.getString("SeeLogForDetails"));
+            Main.showError(languageBundle.getString("FailedLoadConfigErrorMessage") + "\n" + e.getMessage() + "\n"
+                    + languageBundle.getString("SeeLogForDetails"));
         } catch (final ConfigurationException e) {
             System.out.println(3);
             log.log(Level.SEVERE, "Failed to load configuration files", e);
-            Main.showError(languageBundle.getString("FailedLoadConfigErrorMessage") + "\n" + e.getMessage() + "\n" + languageBundle.getString("SeeLogForDetails"));
+            Main.showError(languageBundle.getString("FailedLoadConfigErrorMessage") + "\n" + e.getMessage() + "\n"
+                    + languageBundle.getString("SeeLogForDetails"));
         } catch (final Exception e) {
             System.out.println(e.getMessage());
             log.log(Level.SEVERE, "Failed to load configuration files", e);
-            Main.showError(languageBundle.getString("FailedLoadConfigErrorMessage") + "\n" + e.getMessage() + "\n" + languageBundle.getString("SeeLogForDetails"));
+            Main.showError(languageBundle.getString("FailedLoadConfigErrorMessage") + "\n" + e.getMessage() + "\n"
+                    + languageBundle.getString("SeeLogForDetails"));
         }
 
         return false;
@@ -416,7 +423,8 @@ public class Main {
 
         try {
             // Create the tray icon
-            final TrayIcon icon = new TrayIcon(ImageIO.read(Main.class.getResource("/icon.png")), languageBundle.getString("ShimejiEE"));
+            final TrayIcon icon = new TrayIcon(ImageIO.read(Main.class.getResource("/icon.png")),
+                    languageBundle.getString("ShimejiEE"));
 
             // attach menu
             icon.addMouseListener(new MouseListener() {
@@ -501,7 +509,9 @@ public class Main {
                             @Override
                             public void actionPerformed(final ActionEvent event) {
                                 // "Disable Breeding" menu item
-                                final JCheckBoxMenuItem breedingMenu = new JCheckBoxMenuItem(languageBundle.getString("BreedingCloning"), Boolean.parseBoolean(properties.getProperty("Breeding", "true")));
+                                final JCheckBoxMenuItem breedingMenu = new JCheckBoxMenuItem(
+                                        languageBundle.getString("BreedingCloning"),
+                                        Boolean.parseBoolean(properties.getProperty("Breeding", "true")));
                                 breedingMenu.addItemListener(new ItemListener() {
                                     public void itemStateChanged(final ItemEvent e) {
                                         if (Boolean.parseBoolean(properties.getProperty("Breeding", "true"))) {
@@ -512,7 +522,8 @@ public class Main {
                                             properties.setProperty("Breeding", "true");
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -525,7 +536,9 @@ public class Main {
                                 });
 
                                 // "Disable Transformations" menu item
-                                final JCheckBoxMenuItem transformationMenu = new JCheckBoxMenuItem(languageBundle.getString("Transformation"), Boolean.parseBoolean(properties.getProperty("Transformation", "true")));
+                                final JCheckBoxMenuItem transformationMenu = new JCheckBoxMenuItem(
+                                        languageBundle.getString("Transformation"),
+                                        Boolean.parseBoolean(properties.getProperty("Transformation", "true")));
                                 transformationMenu.addItemListener(new ItemListener() {
                                     public void itemStateChanged(final ItemEvent e) {
                                         if (Boolean.parseBoolean(properties.getProperty("Transformation", "true"))) {
@@ -536,7 +549,8 @@ public class Main {
                                             properties.setProperty("Transformation", "true");
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -549,7 +563,9 @@ public class Main {
                                 });
 
                                 // "Throwing Windows" menu item
-                                final JCheckBoxMenuItem throwingMenu = new JCheckBoxMenuItem(languageBundle.getString("ThrowingWindows"), Boolean.parseBoolean(properties.getProperty("Throwing", "true")));
+                                final JCheckBoxMenuItem throwingMenu = new JCheckBoxMenuItem(
+                                        languageBundle.getString("ThrowingWindows"),
+                                        Boolean.parseBoolean(properties.getProperty("Throwing", "true")));
                                 throwingMenu.addItemListener(new ItemListener() {
                                     public void itemStateChanged(final ItemEvent e) {
                                         if (Boolean.parseBoolean(properties.getProperty("Throwing", "true"))) {
@@ -560,7 +576,8 @@ public class Main {
                                             properties.setProperty("Throwing", "true");
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -573,7 +590,9 @@ public class Main {
                                 });
 
                                 // "Mute Sounds" menu item
-                                final JCheckBoxMenuItem soundsMenu = new JCheckBoxMenuItem(languageBundle.getString("SoundEffects"), Boolean.parseBoolean(properties.getProperty("Sounds", "true")));
+                                final JCheckBoxMenuItem soundsMenu = new JCheckBoxMenuItem(
+                                        languageBundle.getString("SoundEffects"),
+                                        Boolean.parseBoolean(properties.getProperty("Sounds", "true")));
                                 soundsMenu.addItemListener(new ItemListener() {
                                     public void itemStateChanged(final ItemEvent e) {
                                         if (Boolean.parseBoolean(properties.getProperty("Sounds", "true"))) {
@@ -586,7 +605,8 @@ public class Main {
                                             Sounds.setMuted(false);
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -599,7 +619,9 @@ public class Main {
                                 });
 
                                 // "Multiscreen" menu item
-                                final JCheckBoxMenuItem multiscreenMenu = new JCheckBoxMenuItem(languageBundle.getString("Multiscreen"), Boolean.parseBoolean(properties.getProperty("Multiscreen", "true")));
+                                final JCheckBoxMenuItem multiscreenMenu = new JCheckBoxMenuItem(
+                                        languageBundle.getString("Multiscreen"),
+                                        Boolean.parseBoolean(properties.getProperty("Multiscreen", "true")));
                                 multiscreenMenu.addItemListener(new ItemListener() {
                                     public void itemStateChanged(final ItemEvent e) {
                                         if (Boolean.parseBoolean(properties.getProperty("Multiscreen", "true"))) {
@@ -610,7 +632,8 @@ public class Main {
                                             properties.setProperty("Multiscreen", "true");
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -636,10 +659,14 @@ public class Main {
                                     @Override
                                     public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
                                         if (panel.getMousePosition() != null) {
-                                            btnAllowedBehaviours.setEnabled(!(panel.getMousePosition().x > btnAllowedBehaviours.getX() &&
-                                                    panel.getMousePosition().x < btnAllowedBehaviours.getX() + btnAllowedBehaviours.getWidth() &&
-                                                    panel.getMousePosition().y > btnAllowedBehaviours.getY() &&
-                                                    panel.getMousePosition().y < btnAllowedBehaviours.getY() + btnAllowedBehaviours.getHeight()));
+                                            btnAllowedBehaviours.setEnabled(
+                                                    !(panel.getMousePosition().x > btnAllowedBehaviours.getX() &&
+                                                            panel.getMousePosition().x < btnAllowedBehaviours.getX()
+                                                                    + btnAllowedBehaviours.getWidth()
+                                                            &&
+                                                            panel.getMousePosition().y > btnAllowedBehaviours.getY() &&
+                                                            panel.getMousePosition().y < btnAllowedBehaviours.getY()
+                                                                    + btnAllowedBehaviours.getHeight()));
                                         } else {
                                             btnAllowedBehaviours.setEnabled(true);
                                         }
@@ -688,7 +715,8 @@ public class Main {
                                 });
 
                                 // "Interactive Windows" menu item
-                                JMenuItem interactiveMenu = new JMenuItem(languageBundle.getString("ChooseInteractiveWindows"));
+                                JMenuItem interactiveMenu = new JMenuItem(
+                                        languageBundle.getString("ChooseInteractiveWindows"));
                                 interactiveMenu.addActionListener(new ActionListener() {
                                     public void actionPerformed(final ActionEvent e) {
                                         form.dispose();
@@ -698,10 +726,13 @@ public class Main {
                                 });
 
                                 // "Always Show Shimeji Chooser" menu item
-                                final JCheckBoxMenuItem shimejiChooserMenu = new JCheckBoxMenuItem(languageBundle.getString("AlwaysShowShimejiChooser"), Boolean.parseBoolean(properties.getProperty("AlwaysShowShimejiChooser", "false")));
+                                final JCheckBoxMenuItem shimejiChooserMenu = new JCheckBoxMenuItem(
+                                        languageBundle.getString("AlwaysShowShimejiChooser"), Boolean.parseBoolean(
+                                                properties.getProperty("AlwaysShowShimejiChooser", "false")));
                                 shimejiChooserMenu.addItemListener(new ItemListener() {
                                     public void itemStateChanged(final ItemEvent e) {
-                                        if (Boolean.parseBoolean(properties.getProperty("AlwaysShowShimejiChooser", "false"))) {
+                                        if (Boolean.parseBoolean(
+                                                properties.getProperty("AlwaysShowShimejiChooser", "false"))) {
                                             shimejiChooserMenu.setState(false);
                                             properties.setProperty("AlwaysShowShimejiChooser", "false");
                                         } else {
@@ -709,7 +740,8 @@ public class Main {
                                             properties.setProperty("AlwaysShowShimejiChooser", "true");
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -725,7 +757,9 @@ public class Main {
                                 JMenu scalingMenu = new JMenu(languageBundle.getString("Scaling"));
 
                                 // "hqx Filter" menu item
-                                final JCheckBoxMenuItem filterMenu = new JCheckBoxMenuItem(languageBundle.getString("Filter"), Boolean.parseBoolean(properties.getProperty("Filter", "false")));
+                                final JCheckBoxMenuItem filterMenu = new JCheckBoxMenuItem(
+                                        languageBundle.getString("Filter"),
+                                        Boolean.parseBoolean(properties.getProperty("Filter", "false")));
                                 filterMenu.addActionListener(new ActionListener() {
                                     public void actionPerformed(final ActionEvent e) {
                                         form.dispose();
@@ -760,13 +794,15 @@ public class Main {
                                     }
                                 });
 
-                                final JCheckBoxMenuItem scaling1x = new JCheckBoxMenuItem("1x", Integer.parseInt(properties.getProperty("Scaling", "1")) == 1);
+                                final JCheckBoxMenuItem scaling1x = new JCheckBoxMenuItem("1x",
+                                        Integer.parseInt(properties.getProperty("Scaling", "1")) == 1);
                                 scaling1x.addActionListener(new ActionListener() {
                                     public void actionPerformed(final ActionEvent e) {
                                         form.dispose();
                                         properties.setProperty("Scaling", "1");
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -797,13 +833,15 @@ public class Main {
                                         Main.this.getManager().setExitOnLastRemoved(isExit);
                                     }
                                 });
-                                final JCheckBoxMenuItem scaling2x = new JCheckBoxMenuItem("2x", Integer.parseInt(properties.getProperty("Scaling", "1")) == 2);
+                                final JCheckBoxMenuItem scaling2x = new JCheckBoxMenuItem("2x",
+                                        Integer.parseInt(properties.getProperty("Scaling", "1")) == 2);
                                 scaling2x.addActionListener(new ActionListener() {
                                     public void actionPerformed(final ActionEvent e) {
                                         form.dispose();
                                         properties.setProperty("Scaling", "2");
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -834,13 +872,15 @@ public class Main {
                                         Main.this.getManager().setExitOnLastRemoved(isExit);
                                     }
                                 });
-                                final JCheckBoxMenuItem scaling3x = new JCheckBoxMenuItem("3x", Integer.parseInt(properties.getProperty("Scaling", "1")) == 3);
+                                final JCheckBoxMenuItem scaling3x = new JCheckBoxMenuItem("3x",
+                                        Integer.parseInt(properties.getProperty("Scaling", "1")) == 3);
                                 scaling3x.addActionListener(new ActionListener() {
                                     public void actionPerformed(final ActionEvent e) {
                                         form.dispose();
                                         properties.setProperty("Scaling", "3");
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -871,13 +911,15 @@ public class Main {
                                         Main.this.getManager().setExitOnLastRemoved(isExit);
                                     }
                                 });
-                                final JCheckBoxMenuItem scaling4x = new JCheckBoxMenuItem("4x", Integer.parseInt(properties.getProperty("Scaling", "1")) == 4);
+                                final JCheckBoxMenuItem scaling4x = new JCheckBoxMenuItem("4x",
+                                        Integer.parseInt(properties.getProperty("Scaling", "1")) == 4);
                                 scaling4x.addActionListener(new ActionListener() {
                                     public void actionPerformed(final ActionEvent e) {
                                         form.dispose();
                                         properties.setProperty("Scaling", "4");
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -908,13 +950,15 @@ public class Main {
                                         Main.this.getManager().setExitOnLastRemoved(isExit);
                                     }
                                 });
-                                final JCheckBoxMenuItem scaling6x = new JCheckBoxMenuItem("6x", Integer.parseInt(properties.getProperty("Scaling", "1")) == 6);
+                                final JCheckBoxMenuItem scaling6x = new JCheckBoxMenuItem("6x",
+                                        Integer.parseInt(properties.getProperty("Scaling", "1")) == 6);
                                 scaling6x.addActionListener(new ActionListener() {
                                     public void actionPerformed(final ActionEvent e) {
                                         form.dispose();
                                         properties.setProperty("Scaling", "6");
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -945,13 +989,15 @@ public class Main {
                                         Main.this.getManager().setExitOnLastRemoved(isExit);
                                     }
                                 });
-                                final JCheckBoxMenuItem scaling8x = new JCheckBoxMenuItem("8x", Integer.parseInt(properties.getProperty("Scaling", "1")) == 8);
+                                final JCheckBoxMenuItem scaling8x = new JCheckBoxMenuItem("8x",
+                                        Integer.parseInt(properties.getProperty("Scaling", "1")) == 8);
                                 scaling8x.addActionListener(new ActionListener() {
                                     public void actionPerformed(final ActionEvent e) {
                                         form.dispose();
                                         properties.setProperty("Scaling", "8");
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1007,9 +1053,12 @@ public class Main {
                                     public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
                                         if (panel.getMousePosition() != null) {
                                             btnSettings.setEnabled(!(panel.getMousePosition().x > btnSettings.getX() &&
-                                                    panel.getMousePosition().x < btnSettings.getX() + btnSettings.getWidth() &&
+                                                    panel.getMousePosition().x < btnSettings.getX()
+                                                            + btnSettings.getWidth()
+                                                    &&
                                                     panel.getMousePosition().y > btnSettings.getY() &&
-                                                    panel.getMousePosition().y < btnSettings.getY() + btnSettings.getHeight()));
+                                                    panel.getMousePosition().y < btnSettings.getY()
+                                                            + btnSettings.getHeight()));
                                         } else {
                                             btnSettings.setEnabled(true);
                                         }
@@ -1059,7 +1108,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1080,7 +1130,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1101,7 +1152,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1122,7 +1174,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1143,7 +1196,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1164,7 +1218,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1185,7 +1240,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1206,7 +1262,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1227,7 +1284,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1248,7 +1306,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1269,7 +1328,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1281,7 +1341,8 @@ public class Main {
                                 });
 
                                 // Russian menu item
-                                final JMenuItem russianMenu = new JMenuItem("\u0440\u0443\u0301\u0441\u0441\u043a\u0438\u0439 \u044f\u0437\u044b\u0301\u043a");
+                                final JMenuItem russianMenu = new JMenuItem(
+                                        "\u0440\u0443\u0301\u0441\u0441\u043a\u0438\u0439 \u044f\u0437\u044b\u0301\u043a");
                                 russianMenu.addActionListener(new ActionListener() {
                                     public void actionPerformed(final ActionEvent e) {
                                         form.dispose();
@@ -1290,7 +1351,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1311,7 +1373,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1332,7 +1395,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1353,7 +1417,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1374,7 +1439,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1395,7 +1461,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1416,7 +1483,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1437,7 +1505,8 @@ public class Main {
                                             refreshLanguage();
                                         }
                                         try {
-                                            FileOutputStream output = new FileOutputStream("./conf/settings.properties");
+                                            FileOutputStream output = new FileOutputStream(
+                                                    "./conf/settings.properties");
                                             try {
                                                 properties.store(output, "Shimeji-ee Configuration Options");
                                             } finally {
@@ -1478,9 +1547,12 @@ public class Main {
                                     public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
                                         if (panel.getMousePosition() != null) {
                                             btnLanguage.setEnabled(!(panel.getMousePosition().x > btnLanguage.getX() &&
-                                                    panel.getMousePosition().x < btnLanguage.getX() + btnLanguage.getWidth() &&
+                                                    panel.getMousePosition().x < btnLanguage.getX()
+                                                            + btnLanguage.getWidth()
+                                                    &&
                                                     panel.getMousePosition().y > btnLanguage.getY() &&
-                                                    panel.getMousePosition().y < btnLanguage.getY() + btnLanguage.getHeight()));
+                                                    panel.getMousePosition().y < btnLanguage.getY()
+                                                            + btnLanguage.getHeight()));
                                         } else {
                                             btnLanguage.setEnabled(true);
                                         }
@@ -1559,8 +1631,10 @@ public class Main {
                         // setting location of the form
                         form.setLocation(event.getPoint().x - form.getWidth(), event.getPoint().y - form.getHeight());
 
-                        // make sure that it is on the screen if people are using exotic taskbar locations
-                        Rectangle screen = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+                        // make sure that it is on the screen if people are using exotic taskbar
+                        // locations
+                        Rectangle screen = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment()
+                                .getMaximumWindowBounds();
                         if (form.getX() < screen.getX()) {
                             form.setLocation(event.getPoint().x, form.getY());
                         }
@@ -1587,11 +1661,13 @@ public class Main {
             SystemTray.getSystemTray().add(icon);
         } catch (final IOException e) {
             log.log(Level.SEVERE, "Failed to create tray icon", e);
-            Main.showError(languageBundle.getString("FailedDisplaySystemTrayErrorMessage") + "\n" + languageBundle.getString("SeeLogForDetails"));
+            Main.showError(languageBundle.getString("FailedDisplaySystemTrayErrorMessage") + "\n"
+                    + languageBundle.getString("SeeLogForDetails"));
             exit();
         } catch (final AWTException e) {
             log.log(Level.SEVERE, "Failed to create tray icon", e);
-            Main.showError(languageBundle.getString("FailedDisplaySystemTrayErrorMessage") + "\n" + languageBundle.getString("SeeLogForDetails"));
+            Main.showError(languageBundle.getString("FailedDisplaySystemTrayErrorMessage") + "\n"
+                    + languageBundle.getString("SeeLogForDetails"));
             exit();
         }
     }
@@ -1623,22 +1699,26 @@ public class Main {
             this.getManager().add(mascot);
         } catch (final BehaviorInstantiationException e) {
             log.log(Level.SEVERE, "Failed to initialize the first action", e);
-            Main.showError(languageBundle.getString("FailedInitialiseFirstActionErrorMessage") + "\n" + e.getMessage() + "\n" + languageBundle.getString("SeeLogForDetails"));
+            Main.showError(languageBundle.getString("FailedInitialiseFirstActionErrorMessage") + "\n" + e.getMessage()
+                    + "\n" + languageBundle.getString("SeeLogForDetails"));
             mascot.dispose();
         } catch (final CantBeAliveException e) {
             log.log(Level.SEVERE, "Fatal Error", e);
-            Main.showError(languageBundle.getString("FailedInitialiseFirstActionErrorMessage") + "\n" + e.getMessage() + "\n" + languageBundle.getString("SeeLogForDetails"));
+            Main.showError(languageBundle.getString("FailedInitialiseFirstActionErrorMessage") + "\n" + e.getMessage()
+                    + "\n" + languageBundle.getString("SeeLogForDetails"));
             mascot.dispose();
         } catch (Exception e) {
             log.log(Level.SEVERE, imageSet + " fatal error, can not be started.", e);
-            Main.showError(languageBundle.getString("CouldNotCreateShimejiErrorMessage") + imageSet + ".\n" + e.getMessage() + "\n" + languageBundle.getString("SeeLogForDetails"));
+            Main.showError(languageBundle.getString("CouldNotCreateShimejiErrorMessage") + imageSet + ".\n"
+                    + e.getMessage() + "\n" + languageBundle.getString("SeeLogForDetails"));
             mascot.dispose();
         }
     }
 
     private void refreshLanguage() {
         ResourceBundle.Control utf8Control = new Utf8ResourceBundleControl(false);
-        languageBundle = ResourceBundle.getBundle("language", Locale.forLanguageTag(properties.getProperty("Language", "en-GB")), utf8Control);
+        languageBundle = ResourceBundle.getBundle("language",
+                Locale.forLanguageTag(properties.getProperty("Language", "en-GB")), utf8Control);
 
         boolean isExit = getManager().isExitOnLastRemoved();
         getManager().setExitOnLastRemoved(false);
@@ -1767,7 +1847,6 @@ public class Main {
     public void exit() {
         this.getManager().disposeAll();
         this.getManager().stop();
-
 
         System.exit(0);
     }

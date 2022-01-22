@@ -1,7 +1,5 @@
 package com.group_finity.mascot.action;
 
-import java.util.logging.Logger;
-
 import com.group_finity.mascot.exception.VariableException;
 import com.group_finity.mascot.script.VariableMap;
 
@@ -10,8 +8,6 @@ import com.group_finity.mascot.script.VariableMap;
  * Currently developed by Shimeji-ee Group.
  */
 public class Sequence extends ComplexAction {
-
-	private static final Logger log = Logger.getLogger(Sequence.class.getName());
 
 	public static final String PARAMETER_LOOP = "Loop";
 

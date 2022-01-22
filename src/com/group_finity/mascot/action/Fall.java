@@ -2,7 +2,6 @@ package com.group_finity.mascot.action;
 
 import java.awt.Point;
 import java.util.List;
-import java.util.logging.Logger;
 
 import com.group_finity.mascot.Mascot;
 import com.group_finity.mascot.animation.Animation;
@@ -11,12 +10,11 @@ import com.group_finity.mascot.exception.VariableException;
 import com.group_finity.mascot.script.VariableMap;
 
 /**
- * Original Author: Yuki Yamada of Group Finity (http://www.group-finity.com/Shimeji/)
+ * Original Author: Yuki Yamada of Group Finity
+ * (http://www.group-finity.com/Shimeji/)
  * Currently developed by Shimeji-ee Group.
  */
 public class Fall extends ActionBase {
-
-	private static final Logger log = Logger.getLogger(Fall.class.getName());
 
 	public static final String PARAMETER_INITIALVX = "InitialVX";
 
@@ -46,9 +44,8 @@ public class Fall extends ActionBase {
 
 	private double modY;
 
-	public Fall( java.util.ResourceBundle schema, final List<Animation> animations, final VariableMap context )
-        {
-            super( schema, animations, context );
+	public Fall(java.util.ResourceBundle schema, final List<Animation> animations, final VariableMap context) {
+		super(schema, animations, context);
 	}
 
 	@Override
@@ -64,10 +61,10 @@ public class Fall extends ActionBase {
 
 		Point pos = getMascot().getAnchor();
 		boolean onBorder = false;
-		if ( getEnvironment().getFloor().isOn(pos) ) {
+		if (getEnvironment().getFloor().isOn(pos)) {
 			onBorder = true;
 		}
-		if ( getEnvironment().getWall().isOn(pos) ) {
+		if (getEnvironment().getWall().isOn(pos)) {
 			onBorder = true;
 		}
 		return super.hasNext() && !onBorder;
@@ -93,27 +90,27 @@ public class Fall extends ActionBase {
 		this.setModY(this.getModY() % 1);
 
 		int dev = Math.max(Math.abs(dx), Math.abs(dy));
-		if ( dev<1 ) {
+		if (dev < 1) {
 			dev = 1;
 		}
 
 		Point start = getMascot().getAnchor();
 
-		OUTER: for( int i = 0; i<=dev; ++i) {
-			int x = start.x+dx*i/dev;
-			int y = start.y+dy*i/dev;
+		OUTER: for (int i = 0; i <= dev; ++i) {
+			int x = start.x + dx * i / dev;
+			int y = start.y + dy * i / dev;
 
-			getMascot().setAnchor(new Point(x,y));
-			if ( dy>0 ) {
+			getMascot().setAnchor(new Point(x, y));
+			if (dy > 0) {
 				// HACK IE
-				for( int j = -80; j<=0; ++j ) {
-					getMascot().setAnchor(new Point(x,y+j));
-					if ( getEnvironment().getFloor(true).isOn(getMascot().getAnchor()) ) {
+				for (int j = -80; j <= 0; ++j) {
+					getMascot().setAnchor(new Point(x, y + j));
+					if (getEnvironment().getFloor(true).isOn(getMascot().getAnchor())) {
 						break OUTER;
 					}
 				}
 			}
-			if ( getEnvironment().getWall(true).isOn(getMascot().getAnchor()) ) {
+			if (getEnvironment().getWall(true).isOn(getMascot().getAnchor())) {
 				break;
 			}
 		}
@@ -122,30 +119,25 @@ public class Fall extends ActionBase {
 
 	}
 
-    private int getInitialVx( ) throws VariableException
-    {
-        return eval( getSchema( ).getString( PARAMETER_INITIALVX ), Number.class, DEFAULT_INITIALVX ).intValue( );
-    }
+	private int getInitialVx() throws VariableException {
+		return eval(getSchema().getString(PARAMETER_INITIALVX), Number.class, DEFAULT_INITIALVX).intValue();
+	}
 
-    private int getInitialVy( ) throws VariableException
-    {
-        return eval( getSchema( ).getString( PARAMETER_INITIALVY ), Number.class, DEFAULT_INITIALVY ).intValue( );
-    }
+	private int getInitialVy() throws VariableException {
+		return eval(getSchema().getString(PARAMETER_INITIALVY), Number.class, DEFAULT_INITIALVY).intValue();
+	}
 
-    private double getGravity( ) throws VariableException
-    {
-        return eval( getSchema( ).getString( PARAMETER_GRAVITY ), Number.class, DEFAULT_GRAVITY ).doubleValue( );
-    }
+	private double getGravity() throws VariableException {
+		return eval(getSchema().getString(PARAMETER_GRAVITY), Number.class, DEFAULT_GRAVITY).doubleValue();
+	}
 
-    private double getResistanceX( ) throws VariableException
-    {
-        return eval( getSchema( ).getString( PARAMETER_RESISTANCEX ), Number.class, DEFAULT_RESISTANCEX ).doubleValue( );
-    }
+	private double getResistanceX() throws VariableException {
+		return eval(getSchema().getString(PARAMETER_RESISTANCEX), Number.class, DEFAULT_RESISTANCEX).doubleValue();
+	}
 
-    private double getResistanceY( ) throws VariableException
-    {
-        return eval( getSchema( ).getString( PARAMETER_RESISTANCEY ), Number.class, DEFAULT_RESISTANCEY ).doubleValue( );
-    }
+	private double getResistanceY() throws VariableException {
+		return eval(getSchema().getString(PARAMETER_RESISTANCEY), Number.class, DEFAULT_RESISTANCEY).doubleValue();
+	}
 
 	private void setVelocityY(final double velocityY) {
 		this.velocityY = velocityY;

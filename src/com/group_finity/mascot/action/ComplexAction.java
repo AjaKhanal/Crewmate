@@ -1,7 +1,6 @@
 package com.group_finity.mascot.action;
 
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 import com.group_finity.mascot.Mascot;
 import com.group_finity.mascot.animation.Animation;
@@ -10,19 +9,18 @@ import com.group_finity.mascot.exception.VariableException;
 import com.group_finity.mascot.script.VariableMap;
 
 /**
- * Original Author: Yuki Yamada of Group Finity (http://www.group-finity.com/Shimeji/)
+ * Original Author: Yuki Yamada of Group Finity
+ * (http://www.group-finity.com/Shimeji/)
  * Currently developed by Shimeji-ee Group.
  */
 public abstract class ComplexAction extends ActionBase {
-
-	private static final Logger log = Logger.getLogger(ComplexAction.class.getName());
 
 	private final Action[] actions;
 
 	private int currentAction;
 
-	public ComplexAction( java.util.ResourceBundle schema, final VariableMap params, final Action... actions) {
-		super( schema, new ArrayList<Animation>(), params);
+	public ComplexAction(java.util.ResourceBundle schema, final VariableMap params, final Action... actions) {
+		super(schema, new ArrayList<Animation>(), params);
 		if (actions.length == 0) {
 			throw new IllegalArgumentException("actions.length==0");
 		}
@@ -64,17 +62,16 @@ public abstract class ComplexAction extends ActionBase {
 			getAction().next();
 		}
 	}
-        
-        @Override
-        public Boolean isDraggable( ) throws VariableException
-        {
-            boolean draggable = true;
-            if( currentAction < actions.length && actions[ currentAction ] != null && actions[ currentAction ] instanceof ActionBase )
-            {
-                return ( (ActionBase)actions[ currentAction ] ).isDraggable( );
-            }
-            return draggable;
-        }
+
+	@Override
+	public Boolean isDraggable() throws VariableException {
+		boolean draggable = true;
+		if (currentAction < actions.length && actions[currentAction] != null
+				&& actions[currentAction] instanceof ActionBase) {
+			return ((ActionBase) actions[currentAction]).isDraggable();
+		}
+		return draggable;
+	}
 
 	protected void setCurrentAction(final int currentAction) throws VariableException {
 		this.currentAction = currentAction;

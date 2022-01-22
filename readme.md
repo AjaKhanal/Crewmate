@@ -1,8 +1,8 @@
-Shimeji-ee:
+# Shimeji-ee:
 
 Shimeji-ee is a Windows desktop mascot that freely wanders and plays around the screen. The mascot is very configurable; its actions are defined through xml and its animations/images can be (painstakingly) customized. Shimeji was originally created by Yuki Yamada of Group Finity (http://www.group-finity.com/Shimeji/). Moreover, Kilkakon (http://kilkakon.com/shimeji) and other members of the community, branched the original Shimeji project to not only translate the program/source to English, but added additional enhancements to Shimeji. Currently, Aja Khanal, Soran-i and PashaRah are cleaning up/updating all the extra unnecessary code, renovating GUIs, and plan to add modern assistive features to add viability to the simple fun program.
 
-==== Contents ====
+## ==== Contents ====
 
 Our Intentions
 Requirements
@@ -16,17 +16,17 @@ Library
 Troubleshooting
 Additional Note
 
-==== Our Story/Intentions ====
+## ==== Our Story/Intentions ====
 
 We observed that several of the capabilities were broken or missing since the code had not been updated in a long time. We decided as a group to rebuild various sections of the code in order to breathe new life into virtual pets and virtual assistants. Assistants like Peedy the Parrot, Clippy, and BonziBuddy, we believe, had a lot going for them. We reckon Shimeji-ee might add some more fun to your desktop, especially in this day and age, when Amazon Alexa, Google Assistant, and Siri are all the trend.
 
-==== Requirements ====
+## ==== Requirements ====
 
 Windows Vista or higher
 Java 8
 Around 256mb of free ram
 
-==== How to Start ====
+## ==== How to Start ====
 
 Double Click the Shimeji-ee.jar file
 
@@ -36,7 +36,7 @@ Right click a Shimeji to open the command menu.
 
 For a video tutorial on how to get Shimeji running: https://www.youtube.com/watch?v=S7fPCGh5xxo
 
-==== Basic Configuration ====
+## ==== Basic Configuration ====
 
 If you want multiple Shimeji types, you must have multiple image sets. Basically, you put different folders with the correct Shimeji images under the img directory.
 
@@ -51,7 +51,7 @@ Shimeji-ee will ignore all the image sets that are in the img/unused folder, so 
 
 For more information, read through the configuration files in conf/. Most options are somewhat complicated, but it's not too hard to limit the total number of Shimeji or to turn off certain behaviors (hint: set frequency to 0.)
 
-==== Advanced Configuration ====
+## ==== Advanced Configuration ====
 
 All configuration files are located in the conf folders. In general, none of these should need to be touched.
 
@@ -78,23 +78,23 @@ ChaseMouse Fall Dragged Thrown
 
 The icon used for the system tray is img/icon.png
 
-==== How to Quit ====
+## ==== How to Quit ====
 
 Right-click the tray icon of Shimeji, Select "Dismiss All"
 
-==== How to Uninstall ====
+## ==== How to Uninstall ====
 
 Delete the unzipped folder.
 
-==== Source ====
+## ==== Source ====
 
 Programmers may feel free to use the source. The Shimeji-ee source is under the New BSD license. Follow the zlib/libpng licenses.
 
-==== Library ====
+## ==== Library ====
 
 lib / jna.jar and lib / examples.jar of the JNA library. JNA follows the LGPL. lib / AbsoluteLayout.jar from Netbeans.
 
-==== Troubleshooting ====
+## ==== Troubleshooting ====
 
 For a video FAQ, if you encounter problems: 
 https://www.youtube.com/watch?v=A1y9C1Vbn6Q
@@ -110,7 +110,7 @@ Make sure you only have image set folders in your img directory.
 Make sure you have Java on your system.
 Try checking the log (ShimejiLogX.log) for errors. If you find a bug (which is very likely), post it up on the Shimeji-ee homepage in the issues section.
 
-==== Additional Note ====
+## ==== Additional Note ====
 
 It's essential to ensure you acquire shimeji-ee from a viable source. As individuals can code shimeji-ee to perform undesirable activities since it is an open source application. If possible download it from https://github.com/AjaKhanal/Crewmate.
 
